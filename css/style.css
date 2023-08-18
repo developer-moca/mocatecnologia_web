@@ -531,6 +531,10 @@ section {
 }
 
 /* Social Elements when Solid*/
+.social-icons li {
+    display: flex !important;
+
+}
 
 #header.nav-solid .social-icons a {
     -webkit-transition: all 0.3s ease-out;
@@ -669,12 +673,13 @@ nav#nav-mobile a:hover {
 }
 
 .social-icons {
-    display: inline-block;
+    display: flex;
     list-style: none;
 }
 
 .social-icons a {
-    display: inline-block;
+    display: flex;
+
     width: 32px;
     text-align: center;
 }
