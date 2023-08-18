@@ -93,6 +93,9 @@
                             <li>
                                 <a href="#testimonials">Team</a>
                             </li>
+                            <li>
+                                <a href="#contact-us">Contact Us</a>
+                            </li>
 
                         </ul>
                     </nav>
@@ -250,7 +253,7 @@
                 <!--End Content Right Side-->
 
                 <div class="col-3">
-                    <img src="images/dancer.jpg" alt="Dancer"/>
+                    <img src="images/banner-images/banner-site-02.png" alt="Dancer"/>
                 </div>
 
             </div>
@@ -298,6 +301,32 @@
         </aside>
         <!--End of Testimonials-->
         <!--End of Clients-->
+
+
+        <!-- <aside id="contact-us" class="scrollto text-center" data-enllax-ratio=".2">
+
+            <div class="row clearfix">
+
+                <section id="contact">
+                    <h2>Contact Us</h2>
+                    <form id="contact-form">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+
+                        <button id="submit-button" type="button">Send</button>
+                    </form>
+                </section>
+                <div id="response"></div>
+            </div>
+
+        </aside> -->
+        <!--End of Testimonials-->
     </main>
     <!--End Main Content Area-->
 
@@ -344,6 +373,15 @@
 </div>
 
 <!-- Include JavaScript resources -->
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("g_CKTfQ7iGElp9Xvg");
+   })();
+</script>
+
 <script src="js/jquery.1.8.3.min.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/featherlight.min.js"></script>
@@ -356,6 +394,9 @@
 <script src="js/images-loaded.min.js"></script>
 <script src="js/lightbox.min.js"></script>
 <script src="js/site.js"></script>
+<script src="js/send-email.js"></script>
+
+
 
 
 </body>
