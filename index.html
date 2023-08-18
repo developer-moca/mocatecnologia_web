@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Moca Technology</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/moca.svg" title="Favicon"/>
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Namari Color CSS -->
+    <link rel="stylesheet" href="css/namari-color.css">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Animate CSS-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/3f5e53b8bc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status" class="la-ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--End of Preloader-->
+
+<div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
+    <div class="top-border wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"></div>
+    <div class="right-border wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;"></div>
+    <div class="bottom-border wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;"></div>
+    <div class="left-border wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"></div>
+</div>
+
+<div id="wrapper">
+
+    <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5">
+        <div id="header" class="nav-collapse">
+            <div class="row clearfix">
+                <div class="col-1">
+
+                    <!--Logo-->
+                    <div id="logo">
+
+                        <h1 class="title">Moca</h1>
+                    </div>
+                    <!--End of Logo-->
+
+
+
+                    <aside>
+
+                        <!--Social Icons in Header-->
+                        <ul class="social-icons">
+                            <li>
+                                <img style="width: 18px; height: 18px;"src="data:image/png;base64,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">
+                                <a href="./pt/index.html">PT</a>
+                            </li>
+                        </ul>
+                        <!--End of Social Icons in Header-->
+
+                    </aside>
+
+                    <!--Main Navigation-->
+                    <nav id="nav-main">
+                        <ul>
+                            <li>
+                                <a href="#banner">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about">Technologies</a>
+                            </li>
+                            <li>
+                                <a href="#services">Services</a>
+                            </li>
+                            <li>
+                                <a href="#testimonials">Team</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!--End of Main Navigation-->
+
+                    <div id="nav-trigger"><span></span></div>
+                    <nav id="nav-mobile"></nav>
+
+                </div>
+            </div>
+        </div><!--End of Header-->
+
+        <!--Banner Content-->
+        <div id="banner-content" class="row clearfix">
+
+            <div class="col-38">
+
+                <div class="section-heading">
+                    <h1>Transform the digital with Moca Technology</h1>
+                    <h2>Moca Technology: We craft engaging games and robust web solutions, merging passion and innovation. Elevate your digital experience with us.</h2>
+                </div>
+            </div>
+
+        </div><!--End of Row-->
+    </header>
+
+    <!--Main Content Area-->
+    <main id="content">
+
+        <!--Introduction-->
+        <section id="about" class="introduction scrollto">
+
+            <div class="row clearfix">
+
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h2 class="section-title">Our main technologies</h2>
+                    </div>
+
+                </div>
+
+                <div class="col-2-3">
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.1s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa-brands fa-react fa-2x"></i>
+                            <i class="fa-brands fa-angular fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>React &amp; Angular</h4>
+                            <p>With React and Angular, we build attractive, responsive, efficient, and optimized-performance websites, ensuring your brand shines in the digital world.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.3s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa-brands fa-golang fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Golang</h4>
+                            <p>With the power and efficiency of Golang, we specialize in crafting agile and robust APIs.
+                                Leveraging advanced frameworks like Ginkgo, we ensure reliable and efficient testing, delivering high-performance solutions of unwavering quality.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.3s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa-brands fa-unity fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Unity</h4>
+                            <p>Unity is the heart of our game production. Through this powerful platform,
+                                we create cross-platform gaming experiences that captivate and immerse players, regardless of their chosen device.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+
+                      <!--Icon Block-->
+                      <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.3s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <img src="images/rails-logo.svg" alt="ruby on rails icon">
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Ruby on Rails</h4>
+                            <p>The robustness and efficiency of Ruby, coupled with the Rails framework, form the formula we employ to craft sophisticated systems.
+                                These solutions are not only agile and scalable, but also provide a solid foundation for enterprise operations of any scale.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                </div>
+
+            </div>
+
+
+        </section>
+        <!--End of Introduction-->
+
+        <!--Content Section-->
+        <div id="services" class="scrollto clearfix">
+
+            <div class="row no-padding-bottom clearfix">
+
+
+                <!--Content Left Side-->
+                <div class="col-3">
+                    <!--User Testimonial-->
+                    <blockquote class="testimonial text-right bigtest">
+                        <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                            et dolore magna aliqua</q>
+                        <footer>— John Doe, Happy Customer</footer>
+                    </blockquote>
+                    <!-- End of Testimonial-->
+
+                </div>
+                <!--End Content Left Side-->
+
+                <!--Content of the Right Side-->
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h3>BELIEVING</h3>
+                        <h2 class="section-title">Focusing On What Matters Most</h2>
+                        <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam!</p>
+                    </div>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                        dicta sunt explicabo.
+                    </p>
+                    <p>
+                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet!
+                    </p>
+                    <!-- Just replace the Video ID "UYJ5IjBRlW8" with the ID of your video on YouTube (Found within the URL) -->
+                    <a href="#" data-videoid="UYJ5IjBRlW8" data-videosite="youtube" class="button video link-lightbox">
+                        WATCH VIDEO <i class="fa fa-play" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <!--End Content Right Side-->
+
+                <div class="col-3">
+                    <img src="images/dancer.jpg" alt="Dancer"/>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!--End of Content Section-->
+
+        <!--Testimonials-->
+        <aside id="testimonials" class="scrollto text-center" data-enllax-ratio=".2">
+
+            <div class="row clearfix">
+
+                <div class="section-heading">
+                    <h3>TEAM</h3>
+                    <h2 class="section-title">Our team of developers</h2>
+                </div>
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="https://ca.slack-edge.com/TQ32JA4GP-US9E7CRB3-8a5775fa67b7-512" alt="User"/>
+                    <q>Founder and Senior Developer - Leading innovation in game and web development.</q>
+                    <footer>Alexandre Mondaini Calvão</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="https://ca.slack-edge.com/T04T82WMCF5-U04T1JK7V46-ea572119ec50-512" alt="User"/>
+                    <q> Web Development - Turning ideas into exceptional digital experiences.</q>
+                    <footer>Luísa Vaz</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="https://ca.slack-edge.com/T04T82WMCF5-U04T58M71AR-38654af37047-512" alt="User"/>
+                    <q> Web Development - Turning ideas into exceptional digital experiences..</q>
+                    <footer>Igor Labriola da Silva</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+            </div>
+
+        </aside>
+        <!--End of Testimonials-->
+        <!--End of Clients-->
+    </main>
+    <!--End Main Content Area-->
+
+
+    <!--Footer-->
+    <footer id="landing-footer" class="clearfix">
+        <div class="row clearfix">
+
+            <p id="copyright" class="col-2">Made with love by <a href="https://www.shapingrain.com">ShapingRain</a></p>
+
+            <!--Social Icons in Footer-->
+            <!-- <ul class="col-2 social-icons">
+                <li>
+                    <a target="_blank" title="Facebook" href="https://www.facebook.com/username">
+                        <i class="fa fa-facebook fa-1x"></i><span>Facebook</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Google+" href="http://google.com/+username">
+                        <i class="fa fa-google-plus fa-1x"></i><span>Google+</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Twitter" href="http://www.twitter.com/username">
+                        <i class="fa fa-twitter fa-1x"></i><span>Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Instagram" href="http://www.instagram.com/username">
+                        <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="behance" href="http://www.behance.net">
+                        <i class="fa fa-behance fa-1x"></i><span>Behance</span>
+                    </a>
+                </li>
+            </ul> -->
+            <!--End of Social Icons in Footer-->
+        </div>
+    </footer>
+    <!--End of Footer-->
+
+</div>
+
+<!-- Include JavaScript resources -->
+<script src="js/jquery.1.8.3.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/featherlight.min.js"></script>
+<script src="js/featherlight.gallery.min.js"></script>
+<script src="js/jquery.enllax.min.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.stickyNavbar.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/images-loaded.min.js"></script>
+<script src="js/lightbox.min.js"></script>
+<script src="js/site.js"></script>
+
+
+</body>
+</html>
