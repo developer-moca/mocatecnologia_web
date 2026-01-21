@@ -36,6 +36,20 @@ $(document).ready(function () {
 		$('#header').stickyNavbar();
 	}
 
+	/* Smooth Scroll with offset for fixed header */
+	$('a[href^="#"]').not('a[href*=".html"]').on('click', function(e) {
+		var href = this.getAttribute('href');
+		if (href.indexOf('.html') === -1) {
+			var target = $(href);
+			if (target.length) {
+				e.preventDefault();
+				$('html, body').animate({
+					scrollTop: target.offset().top - 71
+				}, 800);
+			}
+		}
+	});
+
 	$('#content').waypoint(function (direction) {
 		if (direction === 'down') {
 			$('#header').addClass('nav-solid fadeInDown');

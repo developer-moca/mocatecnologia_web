@@ -1326,6 +1326,78 @@ blockquote {
     display: inline-block;
 }
 
+/* Clients Grid */
+.clients-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#clients .row.clearfix {
+    display: flex;
+    justify-content: center;
+}
+
+.client-item {
+    text-align: center;
+    padding: 10px;
+}
+
+.client-item img {
+    max-width: 200px;
+    max-height: 120px;
+    object-fit: contain;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.client-item:hover img {
+    transform: scale(1.05);
+}
+
+.client-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+#clients {
+    background-color: #e8e8e8;
+    padding: 40px 0;
+}
+
+#clients .row {
+    padding: 20px 0;
+}
+
+#clients .section-heading {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Responsive Clients Grid */
+@media (max-width: 768px) {
+    .client-item img {
+        max-width: 150px;
+        max-height: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .client-item img {
+        max-width: 120px;
+        max-height: 70px;
+    }
+}
+
 /*------------------------------------------------------------------------------------------*/
 /* 7. Footer */
 /*------------------------------------------------------------------------------------------*/

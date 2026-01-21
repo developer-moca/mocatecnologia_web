@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head lang="pt">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Projetos TOODA - Moca Tecnologia</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="../../images/moca.svg" title="Favicon"/>
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <!-- Namari Color CSS -->
+    <link rel="stylesheet" href="../../css/namari-color.css">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+
+    <!-- Animate CSS-->
+    <link href="../../css/animate.css" rel="stylesheet" type="text/css">
+
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/3f5e53b8bc.js" crossorigin="anonymous"></script>
+
+    <style>
+        .projects-header {
+            background-color: #e8e8e8;
+            padding: 120px 0 60px 0;
+            text-align: center;
+        }
+        .projects-header img {
+            max-width: 250px;
+            margin-bottom: 20px;
+        }
+        .projects-header h1 {
+            font-size: 34px;
+            font-weight: 700;
+            color: #111;
+        }
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card-featured {
+            width: 100%;
+            max-width: 1160px;
+        }
+        .project-card-featured img {
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            background-color: #f5f5f5;
+        }
+        .project-card-featured h3 {
+            font-size: 28px;
+        }
+        .project-card-featured p {
+            font-size: 18px;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-card-content {
+            padding: 20px;
+        }
+        .project-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .project-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .project-card .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b5b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .project-card .btn:hover {
+            background-color: #e55a4a;
+            opacity: 1;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            color: #333;
+        }
+        .back-link i {
+            margin-right: 5px;
+        }
+        @media (max-width: 560px) {
+            .project-card,
+            .project-card-featured {
+                width: 100%;
+            }
+            .project-card-featured img {
+                height: 200px;
+            }
+            .projects-header {
+                padding: 100px 20px 40px 20px;
+            }
+            .projects-header img {
+                max-width: 180px;
+            }
+        }
+        #nav-main li.active a {
+            color: #d2b356 !important;
+            border-bottom: 3px solid #d2b356;
+        }
+        #header.nav-solid {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            height: 71px !important;
+        }
+        #header #logo {
+            margin-top: -12px;
+        }
+        #header aside {
+            margin-right: 20px;
+        }
+        #header #logo h1 {
+            font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+            font-size: 28px;
+            font-weight: 900;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status" class="la-ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--End of Preloader-->
+
+<div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
+    <div class="top-border wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"></div>
+    <div class="right-border wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;"></div>
+    <div class="bottom-border wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;"></div>
+    <div class="left-border wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"></div>
+</div>
+
+<div id="wrapper">
+
+    <header class="clearfix">
+        <div id="header" class="nav-collapse nav-solid">
+            <div class="row clearfix">
+                <div class="col-1">
+
+                    <!--Logo-->
+                    <div id="logo">
+                        <a href="/pt/index.html"><h1 class="title">Moca</h1></a>
+                    </div>
+                    <!--End of Logo-->
+
+                    <aside>
+                        <!--Social Icons in Header-->
+                        <ul class="social-icons">
+                            <li>
+                                <a href="/projects/tooda.html">
+                                    <img style="width: 18px; height: 18px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB2ElEQVR4nGNgoDUIiN0tbB+4LcQpZGuxU8jWMgf/rcFtAW3CRBtgGbhTrH/WlZ3dUy/9Scg/9H/Bylv/p82/9t8/fvf/xy6Opz47mc786GyK38D82uPmBbUnXuTXnvgfmLjnf3blsf8gdljavv/ppUf+33v05vyb9x//v37/8cGrjx/VcLrEK2rXo7SSI//zqo//94nZ9R/GDk7e+z8+7+D/B77ehz+5Wj4C4S9ulhc/2NgIYhhU131uY9fUS/9h3kFmT4N67ebqbbvebd18Fo5Pn+5GMcTGe4tgfs2J38jewea1m9mF2z6mxRyC49So/SiuAsUOunewee16ed3WDyXZB5Dxx9lTfeEG+cTuqED3DjavXZ8wa9uHKf2HUPDsaZlwg3LrjuRWtJ48Swg/Tozf9TnI7SwKTgrLhRv0+vb9gHdXrjwiB7++fT8AbtB7e32Bz05mP744m/0nBX92Mvv5wc1CCCXm3rz7OBOU2EjC7z7OwEhHn2b2iHz2sj0OS3CE8GeQ2pk9IlhT96eceI33a1dtRkl0WzExSA1ILVZDYODDhw+Cb7eub/iYm7wbJfGBcG7KLpAcSA1eQ5ABKAI+OZsHf3E2KwXhTy4mQe9cjPmJNoBcAADzaCSeVBNgtAAAAABJRU5ErkJggg==">
+                                    EN
+                                </a>
+                            </li>
+                        </ul>
+                        <!--End of Social Icons in Header-->
+                    </aside>
+
+                    <!--Main Navigation-->
+                    <nav id="nav-main">
+                        <ul>
+                            <li>
+                                <a href="/pt/index.html#banner">Home</a>
+                            </li>
+                            <li>
+                                <a href="/pt/index.html#about">Tecnologias</a>
+                            </li>
+                            <li>
+                                <a href="/pt/index.html#services">Nossos Valores</a>
+                            </li>
+                            <li class="active">
+                                <a href="/pt/projects/">Projetos</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!--End of Main Navigation-->
+
+                    <div id="nav-trigger"><span></span></div>
+                    <nav id="nav-mobile"></nav>
+
+                </div>
+            </div>
+        </div><!--End of Header-->
+    </header>
+
+    <!--Projects Header-->
+    <section class="projects-header">
+        <img src="../../images/clients/tooda.png" alt="TOODA">
+        <h1>Projetos TOODA</h1>
+        <a href="/pt/projects/" class="back-link"><i class="fa fa-arrow-left"></i> Voltar para todos os projetos</a>
+    </section>
+
+    <!--Projects Grid-->
+    <section class="projects-grid">
+        <div class="project-card project-card-featured wow fadeInUp" data-wow-delay="0.1s">
+            <img src="../../images/clients/moca-tooda-cover.png" alt="MOCA Technology">
+            <div class="project-card-content">
+                <h3>MOCA Technology</h3>
+                <p>Visão técnica da contribuição da MOCA para o projeto TOODA. Abordagem de desenvolvimento e stack tecnológico.</p>
+                <a href="../../files/moca-tooda-project.pdf" target="_blank" class="btn">Ver Projeto</a>
+            </div>
+        </div>
+        <div class="project-card wow fadeInUp" data-wow-delay="0.2s">
+            <img src="../../images/clients/tooda-pitch-cover.png" alt="TOODA Pitch">
+            <div class="project-card-content">
+                <h3>TOODA - Safe Children</h3>
+                <p>Solução inovadora para proteção e ajuda a recuperação de incapazes nas praias do Rio de Janeiro.</p>
+                <a href="../../files/tooda-pitch.pdf" target="_blank" class="btn">Ver Pitch</a>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer id="landing-footer" class="clearfix">
+        <div class="row clearfix">
+            <p id="copyright" class="col-2">Made with love by <a href="https://www.shapingrain.com">ShapingRain</a></p>
+        </div>
+    </footer>
+    <!--End of Footer-->
+
+</div>
+
+<!-- Include JavaScript resources -->
+<script src="../../js/jquery.1.8.3.min.js"></script>
+<script src="../../js/wow.min.js"></script>
+<script src="../../js/featherlight.min.js"></script>
+<script src="../../js/featherlight.gallery.min.js"></script>
+<script src="../../js/jquery.enllax.min.js"></script>
+<script src="../../js/jquery.scrollUp.min.js"></script>
+<script src="../../js/jquery.easing.min.js"></script>
+<script src="../../js/jquery.stickyNavbar.min.js"></script>
+<script src="../../js/jquery.waypoints.min.js"></script>
+<script src="../../js/images-loaded.min.js"></script>
+<script src="../../js/lightbox.min.js"></script>
+<script src="../../js/site.js"></script>
+
+</body>
+</html>
