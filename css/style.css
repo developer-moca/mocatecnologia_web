@@ -1346,12 +1346,18 @@ blockquote {
 
 .client-item {
     text-align: center;
-    padding: 10px;
+    background-color: #d0d0d0;
+    padding: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
 }
 
 .client-item img {
-    max-width: 200px;
-    max-height: 120px;
+    max-width: 120px;
+    max-height: 80px;
     object-fit: contain;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
@@ -1386,15 +1392,15 @@ blockquote {
 /* Responsive Clients Grid */
 @media (max-width: 768px) {
     .client-item img {
-        max-width: 150px;
-        max-height: 90px;
+        max-width: 100px;
+        max-height: 70px;
     }
 }
 
 @media (max-width: 480px) {
     .client-item img {
-        max-width: 120px;
-        max-height: 70px;
+        max-width: 80px;
+        max-height: 60px;
     }
 }
 
