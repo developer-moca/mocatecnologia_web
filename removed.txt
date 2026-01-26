@@ -1,0 +1,56 @@
+        <!--End of Content Section-->
+
+        <!-- Testimonials
+        <aside id="testimonials" class="scrollto text-center" data-enllax-ratio=".2">
+
+            <div class="row clearfix">
+
+                <div class="section-heading">
+                    <h3>TEAM</h3>
+                    <h2 class="section-title">Our team of developers</h2>
+                </div>
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="https://ca.slack-edge.com/TQ32JA4GP-US9E7CRB3-8a5775fa67b7-512" alt="User"/>
+                    <q>Founder and Senior Developer - Leading innovation in game and web development.</q>
+                    <footer>Alexandre Mondaini Calvão</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="https://ca.slack-edge.com/T04T82WMCF5-U04T1JK7V46-ea572119ec50-512" alt="User"/>
+                    <q> Web Development - Turning ideas into exceptional digital experiences.</q>
+                    <footer>Luísa Vaz</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="https://ca.slack-edge.com/T04T82WMCF5-U04T58M71AR-38654af37047-512" alt="User"/>
+                    <q> Web Development - Turning ideas into exceptional digital experiences..</q>
+                    <footer>Igor Labriola da Silva</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="https://avatars.githubusercontent.com/u/6758599?v=4" alt="User"/>
+                    <q> Game Development - Transforming concepts into extraordinary interactive experiences.</q>
+                    <footer>Julio Andrade</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="https://avatars.githubusercontent.com/u/37406260?v=4" alt="User"/>
+                    <q> Game Development - Transforming concepts into extraordinary interactive experiences.</q>
+                    <footer>Raphael Rodrigo</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+            </div>
+
+        </aside> 
