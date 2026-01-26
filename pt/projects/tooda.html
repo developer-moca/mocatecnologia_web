@@ -48,10 +48,10 @@
         .projects-grid {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             gap: 30px;
-            padding: 60px 20px;
-            max-width: 1200px;
+            padding: 60px 40px;
+            max-width: 1600px;
             margin: 0 auto;
         }
         .project-card {
@@ -64,19 +64,23 @@
         }
         .project-card-featured {
             width: 100%;
-            max-width: 1160px;
+            max-width: 1500px;
         }
         .project-card-featured img {
             height: auto;
-            max-height: 600px;
+            max-height: none;
             object-fit: contain;
             background-color: #f5f5f5;
         }
+        .project-card-featured .project-card-content {
+            padding: 30px 40px;
+        }
         .project-card-featured h3 {
-            font-size: 28px;
+            font-size: 36px;
         }
         .project-card-featured p {
-            font-size: 18px;
+            font-size: 22px;
+            line-height: 1.8;
         }
         .project-card:hover {
             transform: translateY(-5px);
