@@ -50,6 +50,9 @@ COPY = {
 def products(locale,base):
  pt=locale=='pt'
  data=[
+  ('Dungeon Fighters', 'Jogo · Ação' if pt else 'Game · Action', 'https://dungeonfighters.github.io/Web/assets/images/screenshot-0.png', 'https://dungeonfighters.github.io/Web/',
+   'Enfrente ondas de monstros em um hack and slash com modos solo e multiplayer local para até quatro jogadores.' if pt else 'Battle waves of monsters in a hack and slash with solo and local multiplayer modes for up to four players.',
+   'Conheça o jogo' if pt else 'Explore the game', 'dungeon'),
   ('TOODA', 'Safe Children', '/images/clients/tooda.png', base+'projects/tooda.html',
    'Tecnologia para proteção e auxílio na localização de pessoas nas praias.' if pt else 'Technology for protecting and helping locate people on beaches.',
    'Conheça o projeto' if pt else 'Explore the project', 'tooda'),

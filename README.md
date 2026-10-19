@@ -24,9 +24,10 @@ After changing content, run `python3 scripts/build_pages.py` and commit the gene
 
 Verified contact links: `developer@mocatecnologia.com` and WhatsApp `+55 21 96604-5167`. Links open the visitor’s email client or WhatsApp; no messages are sent by this site.
 
-Products: TOODA (existing repository material), Paper Hero (user-supplied YouTube video, title verified through YouTube oEmbed), and Kalimour (official Steam listing). External product images load from YouTube and Steam. Product destinations remain usable if those image services are unavailable.
+Products: Dungeon Fighters (official game website), TOODA (existing repository material), Paper Hero (user-supplied YouTube video, title verified through YouTube oEmbed), and Kalimour (official Steam listing). External product images load from YouTube and Steam. Product destinations remain usable if those image services are unavailable.
 
 Sources:
+- https://dungeonfighters.github.io/Web/
 - https://www.youtube.com/watch?v=pX-UymX0gXg
 - https://store.steampowered.com/app/2402460/Kalimour/
 
