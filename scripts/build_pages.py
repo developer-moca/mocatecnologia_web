@@ -85,8 +85,32 @@ def page(locale, kind):
    docs+=f'<article class="document"><img src="/images/clients/{img}" alt="{escape(title)}" loading="lazy"><h2>{title}</h2><p>{desc}</p>{link("/files/"+pdf,action+" (PDF)")}</article>'
   body=f'<section class="page-hero"><div class="wrap"><a class="breadcrumb" href="{base}projects/">← {c["back"]}</a><p class="eyebrow">{c["project_type"]}</p><h1>{c["case_title"]}</h1><p class="lead">{c["case_intro"]}</p></div></section><section class="section light"><div class="wrap document-grid">{docs}</div></section>'
  title=c['name'] if kind=='home' else (c['nav'][2] if kind=='projects' else 'TOODA')+' — '+c['name']
+ url=f'https://www.mocatecnologia.com{base}{suffix}'
+ image=f'https://www.mocatecnologia.com/assets/share-{locale}-v1.jpg'
+ social_title = ('Moca Tecnologia | Software sob medida e produtos digitais' if locale=='pt' else 'Moca Technology | Custom software and digital products') if kind=='home' else title
+ description = c['meta'] if kind=='home' else (c['project_intro'] if kind=='projects' else c['case_intro'])
+ image_alt = 'Moca Tecnologia — montanha e sol em dourado sobre azul-marinho' if locale=='pt' else 'Moca Technology — gold mountain and sun on navy'
+ social=f'''<link rel="canonical" href="{url}">
+<meta property="og:title" content="{escape(social_title)}">
+<meta property="og:description" content="{escape(description)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{c['name']}">
+<meta property="og:url" content="{url}">
+<meta property="og:locale" content="{'pt_BR' if locale=='pt' else 'en_US'}">
+<meta property="og:locale:alternate" content="{'en_US' if locale=='pt' else 'pt_BR'}">
+<meta property="og:image" content="{image}">
+<meta property="og:image:secure_url" content="{image}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{image_alt}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{escape(social_title)}">
+<meta name="twitter:description" content="{escape(description)}">
+<meta name="twitter:image" content="{image}">
+<meta name="twitter:image:alt" content="{image_alt}">'''
  return f'''<!doctype html>
-<html lang="{c['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title><meta name="description" content="{escape(c['meta'])}"><meta name="theme-color" content="#202b3d"><meta property="og:title" content="{title}"><meta property="og:description" content="{escape(c['meta'])}"><meta property="og:type" content="website"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="alternate" hreflang="{c['lang']}" href="https://www.mocatecnologia.com{base}{suffix}"><link rel="alternate" hreflang="{COPY['en' if locale=='pt' else 'pt']['lang']}" href="https://www.mocatecnologia.com{other}{suffix}"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head><body>{header}<main id="main">{body}{contact}</main>{footer}</body></html>'''
+<html lang="{c['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title><meta name="description" content="{escape(c['meta'])}"><meta name="theme-color" content="#202b3d">{social}<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="alternate" hreflang="{c['lang']}" href="https://www.mocatecnologia.com{base}{suffix}"><link rel="alternate" hreflang="{COPY['en' if locale=='pt' else 'pt']['lang']}" href="https://www.mocatecnologia.com{other}{suffix}"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head><body>{header}<main id="main">{body}{contact}</main>{footer}</body></html>'''
 
 if __name__=='__main__':
  for locale in COPY:

@@ -31,3 +31,7 @@ Sources:
 - https://store.steampowered.com/app/2402460/Kalimour/
 
 The previous template's unused CSS, scripts and media remain in the repository for reference but are no longer loaded by the pages.
+
+## Sharing previews
+
+Every page has server-rendered Open Graph and Twitter card metadata, canonical URL, locale and a localized 1200×630 JPEG under `assets/share-*-v1.jpg`. To rebuild the social images from the site's SVG mark, run `python3 scripts/build_social_images.py` (requires librsvg and ImageMagick). Then regenerate pages with `python3 scripts/build_pages.py`. Version image filenames when replacing them to avoid stale image caches. Metadata follows https://ogp.me/.
