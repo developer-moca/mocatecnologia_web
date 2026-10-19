@@ -40,3 +40,7 @@ Every page has server-rendered Open Graph and Twitter card metadata, canonical U
 ## Product detail pages
 
 Four bilingual product pages live at `/products/<slug>/` and `/pt/products/<slug>/`: `dungeon-fighters`, `tooda`, `paper-hero`, `kalimour`. Edit factual product content in `scripts/product_content.py`, then regenerate the 14 pages. Homepage cards link to these pages; original TOODA project routes remain available. Product descriptions use the public sources above.
+
+TOODA Carnival 2026: partnership with FIA-RJ confirmed by the company owner. The supplied one-minute FIA-RJ video is served locally with manual playback and credit. The Tupi article covers the broader SOS Folia initiative; its 60,000-wristband figure is not attributed to TOODA deliveries.
+- https://www.tupi.fm/rio/carnaval-2026-tera-60-mil-pulseiras-para-criancas-no-rj/
+- https://www.instagram.com/p/DVJw0mWFM-b/

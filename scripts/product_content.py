@@ -17,9 +17,9 @@ PRODUCTS = {
  'tooda': {
   'name':'TOODA — Safe Children','image':'/images/clients/moca-tooda-cover.png',
   'tag':('Solução · Proteção e cuidado','Solution · Protection and care'),
-  'intro':('Tecnologia voltada à proteção e ao auxílio na localização de pessoas vulneráveis nas praias do Rio de Janeiro.','Technology focused on protecting and helping locate vulnerable people on Rio de Janeiro’s beaches.'),
+  'intro':('Pulseiras de identificação e tecnologia para apoiar a proteção de pessoas vulneráveis em praias e eventos.','Identification wristbands and technology to support the protection of vulnerable people at beaches and events.'),
   'heading':('Tecnologia a serviço do cuidado.','Technology that cares.'),
-  'body':('O projeto TOODA — Safe Children busca apoiar a segurança de pessoas vulneráveis em ambientes de praia. A Moca contribui com o desenvolvimento tecnológico da solução. As apresentações abaixo mostram a proposta e a participação técnica da empresa.','TOODA — Safe Children aims to support the safety of vulnerable people in beach environments. Moca contributes to the technological development of the solution. The presentations below explain the proposal and the company’s technical participation.'),
+  'body':('O projeto TOODA — Safe Children busca apoiar a segurança de pessoas vulneráveis em ambientes de praia. A Moca contribui com o desenvolvimento tecnológico da solução. Em 2026, a FIA-RJ firmou uma parceria com a TOODA para utilizar as pulseiras no Carnaval. As apresentações mostram a proposta e a participação técnica da Moca.','TOODA — Safe Children aims to support the safety of vulnerable people in beach environments. Moca contributes to the technological development of the solution. In 2026, FIA-RJ partnered with TOODA to use its wristbands during Carnival. The presentations explain the proposal and Moca’s technical participation.'),
   'features':[
    (('O contexto','The context'),('Proteção e auxílio na localização de pessoas nas praias do Rio de Janeiro.','Protection and help locating people on Rio de Janeiro’s beaches.')),
    (('A solução','The solution'),('Conheça a proposta de Safe Children na apresentação do projeto.','Explore the Safe Children proposal in the project presentation.')),
