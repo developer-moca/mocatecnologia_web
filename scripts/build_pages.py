@@ -1,6 +1,7 @@
-"""Generate the six static pages. Run: python3 scripts/build_pages.py."""
+"""Generate the fourteen static pages. Run: python3 scripts/build_pages.py."""
 from pathlib import Path
 from html import escape
+from product_content import PRODUCTS
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTACT_URL = 'https://wa.me/5521966045167'
@@ -48,25 +49,30 @@ COPY = {
 }}
 
 def products(locale,base):
- pt=locale=='pt'
- data=[
-  ('Dungeon Fighters', 'Jogo · Ação' if pt else 'Game · Action', 'https://dungeonfighters.github.io/Web/assets/images/screenshot-0.png', 'https://dungeonfighters.github.io/Web/',
-   'Enfrente ondas de monstros em um hack and slash com modos solo e multiplayer local para até quatro jogadores.' if pt else 'Battle waves of monsters in a hack and slash with solo and local multiplayer modes for up to four players.',
-   'Conheça o jogo' if pt else 'Explore the game', 'dungeon'),
-  ('TOODA', 'Safe Children', '/images/clients/tooda.png', base+'projects/tooda.html',
-   'Tecnologia para proteção e auxílio na localização de pessoas nas praias.' if pt else 'Technology for protecting and helping locate people on beaches.',
-   'Conheça o projeto' if pt else 'Explore the project', 'tooda'),
-  ('Paper Hero', 'Jogo · Vídeo' if pt else 'Game · Video', 'https://i.ytimg.com/vi/pX-UymX0gXg/hqdefault.jpg', 'https://www.youtube.com/watch?v=pX-UymX0gXg',
-   'Veja Paper Hero em movimento no vídeo de apresentação.' if pt else 'See Paper Hero in action in its presentation video.',
-   'Assistir no YouTube' if pt else 'Watch on YouTube', 'paper'),
-  ('Kalimour', 'Jogo · Estratégia' if pt else 'Game · Strategy', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2402460/header.jpg?t=1707143301', 'https://store.steampowered.com/app/2402460/Kalimour/',
-   'Construa cidades, explore territórios e desenvolva seu reino em um jogo de estratégia em hexágonos.' if pt else 'Build cities, explore new lands and grow your kingdom in a hex-based strategy game.',
-   'Conheça na Steam' if pt else 'Explore on Steam', 'kalimour')]
- return ''.join(f'<article class="product-card"><a class="product-image {style}" href="{url}" aria-label="{action}: {title}"><img src="{image}" alt="{title}" loading="lazy" width="460" height="260"></a><p class="eyebrow">{tag}</p><h3>{title}</h3><p>{desc}</p><a class="text-link" href="{url}">{action}<span aria-hidden="true">↗</span></a></article>' for title,tag,image,url,desc,action,style in data)
+ i=0 if locale=='pt' else 1
+ action='Conheça o produto' if i==0 else 'Explore the product'
+ cards=[]
+ for slug,p in PRODUCTS.items():
+  url=f'{base}products/{slug}/'
+  cards.append(f'<article class="product-card"><a class="product-image {slug}" href="{url}" aria-label="{action}: {p["name"]}"><img src="{p["image"]}" alt="{p["name"]}" loading="lazy" width="460" height="260"></a><p class="eyebrow">{p["tag"][i]}</p><h3>{p["name"]}</h3><p>{p["intro"][i]}</p><a class="text-link" href="{url}">{action}<span aria-hidden="true">↗</span></a></article>')
+ return ''.join(cards)
 
-def page(locale, kind):
+
+def product_body(locale, base, slug, link):
+ p=PRODUCTS[slug];i=0 if locale=='pt' else 1
+ back='Todos os produtos' if i==0 else 'All products'
+ actions=''.join(link(url,label[i],'button' if n==0 else 'text-link') for n,(label,url) in enumerate(p['links']))
+ features=''.join(f'<article><span class="number">0{n+1} /</span><h3>{title[i]}</h3><p>{text[i]}</p></article>' for n,(title,text) in enumerate(p['features']))
+ gallery=''.join(f'<a href="{url}" aria-label="{alt[i]}"><img src="{url}" alt="{alt[i]}" loading="lazy" width="1200" height="675"></a>' for url,alt in p['gallery'])
+ media=''
+ if gallery: media=f'<section class="section"><div class="wrap"><p class="eyebrow">{"Dentro do jogo" if i==0 else "Inside the game"}</p><h2>{"Imagens de Dungeon Fighters" if i==0 else "Dungeon Fighters screenshots"}</h2><div class="product-gallery">{gallery}</div></div></section>'
+ if p.get('video'): media=f'<section class="section"><div class="wrap"><p class="eyebrow">{"Vídeo de apresentação" if i==0 else "Presentation video"}</p><h2>Paper Hero</h2><iframe class="product-video" src="{p["video"]}" title="Paper Hero — {"vídeo de apresentação" if i==0 else "presentation video"}" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><a class="text-link" href="https://www.youtube.com/watch?v=pX-UymX0gXg">{"Assistir no YouTube" if i==0 else "Watch on YouTube"} ↗</a></div></section>'
+ related=''.join(f'<a class="related-product" href="{base}products/{key}/">{item["name"]}<span aria-hidden="true">↗</span></a>' for key,item in PRODUCTS.items() if key!=slug)
+ return f'''<section class="page-hero"><div class="wrap"><a class="breadcrumb" href="{base}#products">← {back}</a><div class="product-detail-hero"><div><p class="eyebrow">{p['tag'][i]}</p><h1>{p['name']}</h1><p class="lead">{p['intro'][i]}</p><div class="actions">{actions}</div>{'<p class="product-note">'+p['note'][i]+'</p>' if p.get('note') else ''}</div><img class="detail-cover" src="{p['image']}" alt="{p['name']}" width="1200" height="675"></div></div></section><section class="section light"><div class="wrap"><div class="split"><h2>{p['heading'][i]}</h2><p class="detail-description">{p['body'][i]}</p></div>{'<div class="product-features">'+features+'</div>' if features else ''}</div></section>{media}<section class="section light"><div class="wrap"><h2>{"Explore outros produtos" if i==0 else "Explore more products"}</h2><div class="related-products">{related}</div></div></section>'''
+
+def page(locale, kind, slug=None):
  c=COPY[locale]; base='/pt/' if locale=='pt' else '/'; other='/' if locale=='pt' else '/pt/'
- suffix={'home':'','projects':'projects/','case':'projects/tooda.html'}[kind]
+ suffix=f'products/{slug}/' if kind=='product' else {'home':'','projects':'projects/','case':'projects/tooda.html'}[kind]
  def link(url,text,cls='text-link'):return f'<a class="{cls}" href="{url}">{text}<span aria-hidden="true">↗</span></a>'
  brand=f'<a class="brand" href="{base}" aria-label="{c["name"]}"><img src="/assets/moca-mark.svg" alt="" width="52" height="50"><span class="brand-name">moca<small>{"tecnologia" if locale=="pt" else "technology"}</small></span></a>'
  nav=''.join(f'<a href="{base}#{anchor}">{label}</a>' for anchor,label in zip(['solutions','products','projects','about'],c['nav']))
@@ -80,6 +86,8 @@ def page(locale, kind):
 <section class="section" id="products"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">{c['own']}</p><h2>{c['product_heading']}</h2></div><p class="lead">{"Soluções e jogos que dão forma às nossas ideias. Conheça o que estamos construindo." if locale=='pt' else "Solutions and games that bring our ideas to life. Explore what we are building."}</p></div><div class="products-grid">{products(locale,base)}</div></div></section>
 <section class="section light" id="projects"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">{c['nav'][2]}</p><h2>{c['projects']}</h2></div>{link(base+'projects/',c['all_projects'])}</div>{project()}</div></section>
 <section class="section light" id="about"><div class="wrap"><h2>{c['process_title']}</h2><div class="process">{''.join(f'<article><span class="number">0{i+1} /</span><h3>{title}</h3><p>{desc}</p></article>' for i,(title,desc) in enumerate(c['steps']))}</div><div class="about"><h2>{c['about_title']}</h2><p>{c['about_desc']}</p></div></div></section>'''
+ elif kind=='product':
+  body=product_body(locale,base,slug,link)
  elif kind=='projects':
   body=f'<section class="page-hero"><div class="wrap"><p class="eyebrow">{c["nav"][2]}</p><h1>{c["projects"]}</h1><p class="lead">{c["project_intro"]}</p></div></section><section class="section light"><div class="wrap">{project()}</div></section>'
  else:
@@ -87,11 +95,11 @@ def page(locale, kind):
   for (title,desc,action),img,pdf in zip(c['docs'],['moca-tooda-cover.png','tooda-pitch-cover.png'],['moca-tooda-project.pdf','tooda-pitch.pdf']):
    docs+=f'<article class="document"><img src="/images/clients/{img}" alt="{escape(title)}" loading="lazy"><h2>{title}</h2><p>{desc}</p>{link("/files/"+pdf,action+" (PDF)")}</article>'
   body=f'<section class="page-hero"><div class="wrap"><a class="breadcrumb" href="{base}projects/">← {c["back"]}</a><p class="eyebrow">{c["project_type"]}</p><h1>{c["case_title"]}</h1><p class="lead">{c["case_intro"]}</p></div></section><section class="section light"><div class="wrap document-grid">{docs}</div></section>'
- title=c['name'] if kind=='home' else (c['nav'][2] if kind=='projects' else 'TOODA')+' — '+c['name']
+ title=PRODUCTS[slug]['name']+' — '+c['name'] if kind=='product' else c['name'] if kind=='home' else (c['nav'][2] if kind=='projects' else 'TOODA')+' — '+c['name']
  url=f'https://www.mocatecnologia.com{base}{suffix}'
  image=f'https://www.mocatecnologia.com/assets/share-{locale}-v1.jpg'
  social_title = ('Moca Tecnologia | Software sob medida e produtos digitais' if locale=='pt' else 'Moca Technology | Custom software and digital products') if kind=='home' else title
- description = c['meta'] if kind=='home' else (c['project_intro'] if kind=='projects' else c['case_intro'])
+ description = PRODUCTS[slug]['intro'][0 if locale=='pt' else 1] if kind=='product' else c['meta'] if kind=='home' else (c['project_intro'] if kind=='projects' else c['case_intro'])
  image_alt = 'Moca Tecnologia — montanha e sol em dourado sobre azul-marinho' if locale=='pt' else 'Moca Technology — gold mountain and sun on navy'
  social=f'''<link rel="canonical" href="{url}">
 <meta property="og:title" content="{escape(social_title)}">
@@ -113,11 +121,13 @@ def page(locale, kind):
 <meta name="twitter:image" content="{image}">
 <meta name="twitter:image:alt" content="{image_alt}">'''
  return f'''<!doctype html>
-<html lang="{c['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title><meta name="description" content="{escape(c['meta'])}"><meta name="theme-color" content="#202b3d">{social}<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="alternate" hreflang="{c['lang']}" href="https://www.mocatecnologia.com{base}{suffix}"><link rel="alternate" hreflang="{COPY['en' if locale=='pt' else 'pt']['lang']}" href="https://www.mocatecnologia.com{other}{suffix}"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head><body>{header}<main id="main">{body}{contact}</main>{footer}</body></html>'''
+<html lang="{c['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title><meta name="description" content="{escape(description)}"><meta name="theme-color" content="#202b3d">{social}<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="alternate" hreflang="{c['lang']}" href="https://www.mocatecnologia.com{base}{suffix}"><link rel="alternate" hreflang="{COPY['en' if locale=='pt' else 'pt']['lang']}" href="https://www.mocatecnologia.com{other}{suffix}"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head><body>{header}<main id="main">{body}{contact}</main>{footer}</body></html>'''
 
 if __name__=='__main__':
  for locale in COPY:
   base=ROOT/'pt' if locale=='pt' else ROOT
   for kind,path in [('home','index.html'),('projects','projects/index.html'),('case','projects/tooda.html')]:
    dest=base/path;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page(locale,kind))
- print('Generated 6 pages.')
+  for slug in PRODUCTS:
+   dest=base/'products'/slug/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page(locale,'product',slug))
+ print('Generated 14 pages.')

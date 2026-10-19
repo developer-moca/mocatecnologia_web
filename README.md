@@ -36,3 +36,7 @@ The previous template's unused CSS, scripts and media remain in the repository f
 ## Sharing previews
 
 Every page has server-rendered Open Graph and Twitter card metadata, canonical URL, locale and a localized 1200×630 JPEG under `assets/share-*-v1.jpg`. To rebuild the social images from the site's SVG mark, run `python3 scripts/build_social_images.py` (requires librsvg and ImageMagick). Then regenerate pages with `python3 scripts/build_pages.py`. Version image filenames when replacing them to avoid stale image caches. Metadata follows https://ogp.me/.
+
+## Product detail pages
+
+Four bilingual product pages live at `/products/<slug>/` and `/pt/products/<slug>/`: `dungeon-fighters`, `tooda`, `paper-hero`, `kalimour`. Edit factual product content in `scripts/product_content.py`, then regenerate the 14 pages. Homepage cards link to these pages; original TOODA project routes remain available. Product descriptions use the public sources above.
