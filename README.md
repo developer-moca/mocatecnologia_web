@@ -44,3 +44,22 @@ Four bilingual product pages live at `/products/<slug>/` and `/pt/products/<slug
 TOODA Carnival 2026: partnership with FIA-RJ confirmed by the company owner. The supplied one-minute FIA-RJ video is served locally with manual playback and credit. The Tupi article covers the broader SOS Folia initiative; its 60,000-wristband figure is not attributed to TOODA deliveries.
 - https://www.tupi.fm/rio/carnaval-2026-tera-60-mil-pulseiras-para-criancas-no-rj/
 - https://www.instagram.com/p/DVJw0mWFM-b/
+
+## SEO and services
+
+`python3 scripts/build_pages.py` generates 18 pages plus `sitemap.xml` and
+`robots.txt`. Service copy lives in `scripts/service_content.py`. All routes
+include canonical URLs, reciprocal language alternatives, an English x-default,
+and JSON-LD; home pages describe the organization and service pages describe
+services. The generator is the source of truth for generated HTML.
+
+Service pages: `/pt/services/custom-software/` and `/pt/services/metabase-bi/`,
+with corresponding English routes under `/services/`. Public case descriptions
+avoid operational details and do not claim measured outcomes or production
+status based on repository code alone. Metabase is presented as a third-party
+tool used in service delivery.
+
+Search Console follow-up: verify the domain property, submit
+`https://www.mocatecnologia.com/sitemap.xml`, inspect the service URLs and monitor
+indexing and search queries. Publishing these files does not itself confirm
+Google indexing or Search Console setup.

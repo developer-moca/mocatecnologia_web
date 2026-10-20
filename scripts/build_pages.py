@@ -1,4 +1,7 @@
-"""Generate the fourteen static pages. Run: python3 scripts/build_pages.py."""
+"""Generate static pages and search discovery files. Run: python3 scripts/build_pages.py."""
+import json
+from xml.etree import ElementTree as ET
+from service_content import SERVICES, service_body
 from pathlib import Path
 from html import escape
 from product_content import PRODUCTS
@@ -76,7 +79,7 @@ def product_body(locale, base, slug, link):
 
 def page(locale, kind, slug=None):
  c=COPY[locale]; base='/pt/' if locale=='pt' else '/'; other='/' if locale=='pt' else '/pt/'
- suffix=f'products/{slug}/' if kind=='product' else {'home':'','projects':'projects/','case':'projects/tooda.html'}[kind]
+ suffix=f'services/{slug}/' if kind=='service' else f'products/{slug}/' if kind=='product' else {'home':'','projects':'projects/','case':'projects/tooda.html'}[kind]
  def link(url,text,cls='text-link'):return f'<a class="{cls}" href="{url}">{text}<span aria-hidden="true">↗</span></a>'
  brand=f'<a class="brand" href="{base}" aria-label="{c["name"]}"><img src="/assets/moca-mark.svg" alt="" width="52" height="50"><span class="brand-name">moca<small>{"tecnologia" if locale=="pt" else "technology"}</small></span></a>'
  nav=''.join(f'<a href="{base}#{anchor}">{label}</a>' for anchor,label in zip(['solutions','products','projects','about'],c['nav']))
@@ -86,10 +89,12 @@ def page(locale, kind, slug=None):
  def project():return f'<div class="project"><a class="project-visual" href="{base}projects/tooda.html"><img src="/images/clients/moca-tooda-cover.png" alt="TOODA — Safe Children" width="1000" height="600" loading="lazy"></a><div><p class="eyebrow">{c["project_type"]}</p><h3>TOODA — Safe Children</h3><p>{c["tooda_desc"]}</p>{link(base+"projects/tooda.html",c["view_project"])}</div></div>'
  if kind=='home':
   body=f'''<section class="hero"><div class="wrap"><div class="hero-grid"><div><p class="eyebrow">{c['eyebrow']}</p><h1>{c['headline']}</h1><p class="lead">{c['intro']}</p><div class="actions">{link('#contact',c['cta'],'button')}{link('#products',c['explore'])}</div></div><div class="brand-drawing" aria-hidden="true"><img src="/assets/moca-mark.svg" alt="" width="360" height="330"><span class="drawing-note">MOCA / {"NOVOS HORIZONTES" if locale=='pt' else "NEW HORIZONS"}</span></div></div><div class="hero-bottom"><span>{c['bottom'][0]}</span><span>{c['bottom'][1]} ↘</span></div></div></section>
-<section class="section light" id="solutions"><div class="wrap"><div class="section-heading"><h2>{c['solutions']}</h2><p class="section-intro">{c['solutions_intro']}</p></div><div class="split"><article class="service"><span class="number">01 /</span><h3>{c['custom']}</h3><p>{c['custom_desc']}</p><div class="tags">{''.join('<span>'+t+'</span>' for t in c['tags'])}</div></article><article class="service"><span class="number">02 /</span><h3>{c['own']}</h3><p>{c['own_desc']}</p>{link('#products',c['explore'])}</article></div></div></section>
+<section class="section light" id="solutions"><div class="wrap"><div class="section-heading"><h2>{c['solutions']}</h2><p class="section-intro">{c['solutions_intro']}</p></div><div class="split"><article class="service"><span class="number">01 /</span><h3>{c['custom']}</h3><p>{c['custom_desc']}</p><div class="tags">{''.join('<span>'+t+'</span>' for t in c['tags'])}</div>{link(base+'services/custom-software/',c['custom'])}<br>{link(base+'services/metabase-bi/','BI &amp; Metabase')}</article><article class="service"><span class="number">02 /</span><h3>{c['own']}</h3><p>{c['own_desc']}</p>{link('#products',c['explore'])}</article></div></div></section>
 <section class="section" id="products"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">{c['own']}</p><h2>{c['product_heading']}</h2></div><p class="lead">{"Soluções e jogos que dão forma às nossas ideias. Conheça o que estamos construindo." if locale=='pt' else "Solutions and games that bring our ideas to life. Explore what we are building."}</p></div><div class="products-grid">{products(locale,base)}</div></div></section>
 <section class="section light" id="projects"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">{c['nav'][2]}</p><h2>{c['projects']}</h2></div>{link(base+'projects/',c['all_projects'])}</div>{project()}</div></section>
 <section class="section light" id="about"><div class="wrap"><h2>{c['process_title']}</h2><div class="process">{''.join(f'<article><span class="number">0{i+1} /</span><h3>{title}</h3><p>{desc}</p></article>' for i,(title,desc) in enumerate(c['steps']))}</div><div class="about"><h2>{c['about_title']}</h2><p>{c['about_desc']}</p></div></div></section>'''
+ elif kind=='service':
+  body=service_body(locale,base,slug)
  elif kind=='product':
   body=product_body(locale,base,slug,link)
  elif kind=='projects':
@@ -100,10 +105,13 @@ def page(locale, kind, slug=None):
    docs+=f'<article class="document"><img src="/images/clients/{img}" alt="{escape(title)}" loading="lazy"><h2>{title}</h2><p>{desc}</p>{link("/files/"+pdf,action+" (PDF)")}</article>'
   body=f'<section class="page-hero"><div class="wrap"><a class="breadcrumb" href="{base}projects/">← {c["back"]}</a><p class="eyebrow">{c["project_type"]}</p><h1>{c["case_title"]}</h1><p class="lead">{c["case_intro"]}</p></div></section><section class="section light"><div class="wrap document-grid">{docs}</div></section>'
  title=PRODUCTS[slug]['name']+' — '+c['name'] if kind=='product' else c['name'] if kind=='home' else (c['nav'][2] if kind=='projects' else 'TOODA')+' — '+c['name']
+ if kind=='service': title=SERVICES[slug]['title'][0 if locale=='pt' else 1]+' — '+c['name']
+ if kind=='home': title=c['name']+' | '+('Software sob medida e produtos digitais' if locale=='pt' else 'Custom software and digital products')
  url=f'https://www.mocatecnologia.com{base}{suffix}'
  image=f'https://www.mocatecnologia.com/assets/share-{locale}-v1.jpg'
  social_title = ('Moca Tecnologia | Software sob medida e produtos digitais' if locale=='pt' else 'Moca Technology | Custom software and digital products') if kind=='home' else title
  description = PRODUCTS[slug]['intro'][0 if locale=='pt' else 1] if kind=='product' else c['meta'] if kind=='home' else (c['project_intro'] if kind=='projects' else c['case_intro'])
+ if kind=='service': description=SERVICES[slug]['intro'][0 if locale=='pt' else 1]
  image_alt = 'Moca Tecnologia — montanha e sol em dourado sobre azul-marinho' if locale=='pt' else 'Moca Technology — gold mountain and sun on navy'
  social=f'''<link rel="canonical" href="{url}">
 <meta property="og:title" content="{escape(social_title)}">
@@ -124,8 +132,15 @@ def page(locale, kind, slug=None):
 <meta name="twitter:description" content="{escape(description)}">
 <meta name="twitter:image" content="{image}">
 <meta name="twitter:image:alt" content="{image_alt}">'''
+ org_id='https://www.mocatecnologia.com/#organization'
+ graph=[{'@type':'WebPage','@id':url+'#webpage','url':url,'name':title,'description':description,'inLanguage':c['lang']}]
+ if kind=='home':
+  graph.append({'@type':'Organization','@id':org_id,'name':'Moca Tecnologia','url':'https://www.mocatecnologia.com/','logo':'https://www.mocatecnologia.com/assets/moca-mark.svg','email':EMAIL,'telephone':'+5521966045167','sameAs':['https://github.com/developer-moca']})
+ if kind=='service':
+  graph.append({'@type':'Service','@id':url+'#service','name':SERVICES[slug]['title'][0 if locale=='pt' else 1],'description':description,'url':url,'provider':{'@id':org_id}})
+ structured='<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('<','\\u003c')+'</script>'
  return f'''<!doctype html>
-<html lang="{c['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title><meta name="description" content="{escape(description)}"><meta name="theme-color" content="#202b3d">{social}<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="alternate" hreflang="{c['lang']}" href="https://www.mocatecnologia.com{base}{suffix}"><link rel="alternate" hreflang="{COPY['en' if locale=='pt' else 'pt']['lang']}" href="https://www.mocatecnologia.com{other}{suffix}"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head><body>{header}<main id="main">{body}{contact}</main>{footer}</body></html>'''
+<html lang="{c['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title><meta name="description" content="{escape(description)}"><meta name="theme-color" content="#202b3d">{social}{structured}<link rel="alternate" hreflang="x-default" href="https://www.mocatecnologia.com/{suffix}"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="alternate" hreflang="{c['lang']}" href="https://www.mocatecnologia.com{base}{suffix}"><link rel="alternate" hreflang="{COPY['en' if locale=='pt' else 'pt']['lang']}" href="https://www.mocatecnologia.com{other}{suffix}"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head><body>{header}<main id="main">{body}{contact}</main>{footer}</body></html>'''
 
 if __name__=='__main__':
  for locale in COPY:
@@ -134,4 +149,16 @@ if __name__=='__main__':
    dest=base/path;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page(locale,kind))
   for slug in PRODUCTS:
    dest=base/'products'/slug/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page(locale,'product',slug))
- print('Generated 14 pages.')
+  for slug in SERVICES:
+   dest=base/'services'/slug/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(page(locale,'service',slug))
+ routes=['','projects/','projects/tooda.html']+[f'products/{slug}/' for slug in PRODUCTS]+[f'services/{slug}/' for slug in SERVICES]
+ ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+ sitemap=ET.Element('{http://www.sitemaps.org/schemas/sitemap/0.9}urlset')
+ for prefix in ['', 'pt/']:
+  for route in routes:
+   entry=ET.SubElement(sitemap,'{http://www.sitemaps.org/schemas/sitemap/0.9}url')
+   ET.SubElement(entry,'{http://www.sitemaps.org/schemas/sitemap/0.9}loc').text='https://www.mocatecnologia.com/'+prefix+route
+ ET.indent(sitemap)
+ ET.ElementTree(sitemap).write(ROOT/'sitemap.xml',encoding='utf-8',xml_declaration=True)
+ (ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: https://www.mocatecnologia.com/sitemap.xml\n')
+ print(f'Generated {2*len(routes)} pages and sitemap.xml / robots.txt.')
