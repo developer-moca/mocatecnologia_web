@@ -63,3 +63,19 @@ Search Console follow-up: verify the domain property, submit
 `https://www.mocatecnologia.com/sitemap.xml`, inspect the service URLs and monitor
 indexing and search queries. Publishing these files does not itself confirm
 Google indexing or Search Console setup.
+
+## Responsive images
+
+`python3 scripts/build_images.py` builds lossless WebP variants with ImageMagick
+at widths up to 480, 800, 1200 and the original width (never upscaled). Original
+files remain available; remote sources are listed in the script and downloaded
+into the ignored `.image-cache/` directory. Smaller JPEG originals remain in use
+when lossless conversion would increase their size. Generated filenames include
+a content hash. Commit `assets/optimized/` and `scripts/image_manifest.json`.
+Then run `python3 scripts/build_pages.py` to refresh both languages.
+
+`scripts/responsive_images.py` adds `srcset`, `sizes`, original aspect dimensions
+and asynchronous decoding, and optimizes the video poster. Full-resolution WebP
+versions were checked against originals with ImageMagick's absolute pixel error
+metric (zero differing pixels). Smaller variants are resized for their display
+size; original-resolution variants remain available for high-density screens.

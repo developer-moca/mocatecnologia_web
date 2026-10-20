@@ -1,0 +1,161 @@
+{
+  "https://dungeonfighters.github.io/Web/assets/images/screenshot-0.png": {
+    "width": 1887,
+    "height": 1080,
+    "original_bytes": 2047950,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/optimized/dungeon-cover-480-1524cdcdca.webp",
+        "bytes": 122190
+      },
+      {
+        "width": 800,
+        "url": "/assets/optimized/dungeon-cover-800-4cdb8a8c18.webp",
+        "bytes": 284684
+      },
+      {
+        "width": 1200,
+        "url": "/assets/optimized/dungeon-cover-1200-41b1f50cea.webp",
+        "bytes": 546964
+      },
+      {
+        "width": 1887,
+        "url": "/assets/optimized/dungeon-cover-1887-54658ae64e.webp",
+        "bytes": 1128664
+      }
+    ]
+  },
+  "https://dungeonfighters.github.io/Web/assets/images/screenshot-1.png": {
+    "width": 1887,
+    "height": 1080,
+    "original_bytes": 1999770,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/optimized/dungeon-1-480-0e5aa0d4ac.webp",
+        "bytes": 119634
+      },
+      {
+        "width": 800,
+        "url": "/assets/optimized/dungeon-1-800-3e7fce3255.webp",
+        "bytes": 278666
+      },
+      {
+        "width": 1200,
+        "url": "/assets/optimized/dungeon-1-1200-d9e840d4fa.webp",
+        "bytes": 534034
+      },
+      {
+        "width": 1887,
+        "url": "/assets/optimized/dungeon-1-1887-904f21dc83.webp",
+        "bytes": 1104186
+      }
+    ]
+  },
+  "https://dungeonfighters.github.io/Web/assets/images/screenshot-2.png": {
+    "width": 1887,
+    "height": 1080,
+    "original_bytes": 2015767,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/optimized/dungeon-2-480-f6c8a1d711.webp",
+        "bytes": 120752
+      },
+      {
+        "width": 800,
+        "url": "/assets/optimized/dungeon-2-800-65076ddc13.webp",
+        "bytes": 282484
+      },
+      {
+        "width": 1200,
+        "url": "/assets/optimized/dungeon-2-1200-b127a2855c.webp",
+        "bytes": 540144
+      },
+      {
+        "width": 1887,
+        "url": "/assets/optimized/dungeon-2-1887-54216284bc.webp",
+        "bytes": 1112006
+      }
+    ]
+  },
+  "https://dungeonfighters.github.io/Web/assets/images/screenshot-3.png": {
+    "width": 1887,
+    "height": 1080,
+    "original_bytes": 895636,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/optimized/dungeon-3-480-47e29be352.webp",
+        "bytes": 65588
+      },
+      {
+        "width": 800,
+        "url": "/assets/optimized/dungeon-3-800-0f0173b450.webp",
+        "bytes": 134722
+      },
+      {
+        "width": 1200,
+        "url": "/assets/optimized/dungeon-3-1200-010418884c.webp",
+        "bytes": 244896
+      },
+      {
+        "width": 1887,
+        "url": "/assets/optimized/dungeon-3-1887-bcbb259533.webp",
+        "bytes": 458284
+      }
+    ]
+  },
+  "/images/clients/moca-tooda-cover.png": {
+    "width": 1200,
+    "height": 675,
+    "original_bytes": 683088,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/optimized/tooda-cover-480-f445263444.webp",
+        "bytes": 77312
+      },
+      {
+        "width": 800,
+        "url": "/assets/optimized/tooda-cover-800-c7f0ab4b82.webp",
+        "bytes": 174118
+      },
+      {
+        "width": 1200,
+        "url": "/assets/optimized/tooda-cover-1200-24f026e219.webp",
+        "bytes": 358494
+      }
+    ]
+  },
+  "/images/clients/tooda-pitch-cover.png": {
+    "width": 800,
+    "height": 449,
+    "original_bytes": 428867,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/optimized/tooda-pitch-480-42df137840.webp",
+        "bytes": 96776
+      },
+      {
+        "width": 800,
+        "url": "/assets/optimized/tooda-pitch-800-52ab86f610.webp",
+        "bytes": 237114
+      }
+    ]
+  },
+  "/assets/media/tooda-fia-poster.png": {
+    "width": 359,
+    "height": 640,
+    "original_bytes": 339472,
+    "variants": [
+      {
+        "width": 359,
+        "url": "/assets/optimized/tooda-poster-359-a77d88f1e6.webp",
+        "bytes": 214452
+      }
+    ]
+  }
+}

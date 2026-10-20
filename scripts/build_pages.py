@@ -5,6 +5,7 @@ from service_content import SERVICES, service_body
 from pathlib import Path
 from html import escape
 from product_content import PRODUCTS
+from responsive_images import optimize_images
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTACT_URL = 'https://wa.me/5521966045167'
@@ -139,8 +140,8 @@ def page(locale, kind, slug=None):
  if kind=='service':
   graph.append({'@type':'Service','@id':url+'#service','name':SERVICES[slug]['title'][0 if locale=='pt' else 1],'description':description,'url':url,'provider':{'@id':org_id}})
  structured='<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('<','\\u003c')+'</script>'
- return f'''<!doctype html>
-<html lang="{c['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="google-site-verification" content="q009FzzQHClPGk5oR6spEfnZdbAVIJ-h1LnwJhLGqtw"><title>{title}</title><meta name="description" content="{escape(description)}"><meta name="theme-color" content="#202b3d">{social}{structured}<link rel="alternate" hreflang="x-default" href="https://www.mocatecnologia.com/{suffix}"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="alternate" hreflang="{c['lang']}" href="https://www.mocatecnologia.com{base}{suffix}"><link rel="alternate" hreflang="{COPY['en' if locale=='pt' else 'pt']['lang']}" href="https://www.mocatecnologia.com{other}{suffix}"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head><body>{header}<main id="main">{body}{contact}</main>{footer}</body></html>'''
+ return optimize_images(f'''<!doctype html>
+<html lang="{c['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="google-site-verification" content="q009FzzQHClPGk5oR6spEfnZdbAVIJ-h1LnwJhLGqtw"><title>{title}</title><meta name="description" content="{escape(description)}"><meta name="theme-color" content="#202b3d">{social}{structured}<link rel="alternate" hreflang="x-default" href="https://www.mocatecnologia.com/{suffix}"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="alternate" hreflang="{c['lang']}" href="https://www.mocatecnologia.com{base}{suffix}"><link rel="alternate" hreflang="{COPY['en' if locale=='pt' else 'pt']['lang']}" href="https://www.mocatecnologia.com{other}{suffix}"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head><body>{header}<main id="main">{body}{contact}</main>{footer}</body></html>''')
 
 if __name__=='__main__':
  for locale in COPY:
