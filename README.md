@@ -79,3 +79,23 @@ and asynchronous decoding, and optimizes the video poster. Full-resolution WebP
 versions were checked against originals with ImageMagick's absolute pixel error
 metric (zero differing pixels). Smaller variants are resized for their display
 size; original-resolution variants remain available for high-density screens.
+
+## Brand identity in search
+
+Use **Moca Tecnologia** as the brand name in both languages; translate service
+copy, not the company name. `scripts/build_pages.py` defines the shared identity.
+Home pages include one `WebSite` entity for the root domain, published by the
+`Organization`. Every `WebPage` references that website and organization.
+Canonical URLs and language alternatives remain separate for each translation.
+
+Only confirmed company profiles belong in `OFFICIAL_PROFILES` / `sameAs`.
+The existing GitHub account is https://github.com/developer-moca; product
+websites and client accounts are not alternate identities of Moca.
+The GitHub profile should use the name “Moca Tecnologia”, website
+https://www.mocatecnologia.com/ and a description such as
+“Software sob medida, produtos digitais e jogos. Conheça nossos projetos.”
+Changing that account requires its owner's access.
+
+These signals help communicate identity; they do not guarantee ranking or
+disable Google's automatic spelling corrections. Reference:
+https://developers.google.com/search/docs/appearance/site-names

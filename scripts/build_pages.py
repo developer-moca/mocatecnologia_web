@@ -8,6 +8,9 @@ from product_content import PRODUCTS
 from responsive_images import optimize_images
 
 ROOT = Path(__file__).resolve().parents[1]
+BRAND_NAME = 'Moca Tecnologia'
+SITE_URL = 'https://www.mocatecnologia.com/'
+OFFICIAL_PROFILES = ['https://github.com/developer-moca']
 CONTACT_URL = 'https://wa.me/5521966045167'
 EMAIL = 'developer@mocatecnologia.com'
 COPY = {
@@ -25,15 +28,15 @@ COPY = {
  'projects':'Tecnologia em projetos reais.','project_intro':'Conheça um dos projetos com participação da Moca.','project_type':'Projeto em colaboração','tooda_desc':'Uma iniciativa voltada à proteção e ao auxílio na localização de pessoas vulneráveis nas praias do Rio de Janeiro. Conheça a contribuição técnica da Moca e a apresentação da solução.',
  'view_project':'Conheça o projeto','all_projects':'Todos os projetos','process_title':'Da primeira conversa<br>à evolução do produto.',
  'steps':[('Entender','Conhecer o contexto, as pessoas e o problema a resolver.'),('Desenhar','Definir a experiência, a arquitetura e as prioridades.'),('Construir','Transformar decisões em software, com testes e entregas incrementais.'),('Evoluir','Aprender com o uso e orientar os próximos passos.')],
- 'about_title':'Engenharia com<br>espaço para criar.','about_desc':'Somos a Moca Tecnologia. Combinamos desenvolvimento de sistemas, aplicações web e experiências interativas. Acreditamos em tecnologia que aproxima pessoas e transforma ideias em soluções úteis.',
+ 'about_title':'Sobre a<br>Moca Tecnologia.','about_desc':'Somos a Moca Tecnologia. Combinamos desenvolvimento de sistemas, aplicações web e experiências interativas. Acreditamos em tecnologia que aproxima pessoas e transforma ideias em soluções úteis.',
  'contact_title':'O próximo projeto<br>começa com uma conversa.','contact_desc':'Um sistema para sua empresa ou uma ideia de produto? Vamos entender o que você quer construir.','contact_fallback':'Encontre a Moca no GitHub','footer':'Software, produtos e novas possibilidades.','back':'Voltar para projetos',
  'case_title':'TOODA.<br>Tecnologia a serviço do cuidado.','case_intro':'Conheça a solução e a participação técnica da Moca no projeto TOODA — Safe Children.',
  'docs':[('A contribuição da Moca','Visão técnica do projeto, abordagem de desenvolvimento e tecnologias utilizadas.','Ver apresentação técnica'),('TOODA — Safe Children','Apresentação da solução para proteção e auxílio na localização de pessoas vulneráveis nas praias do Rio de Janeiro.','Ver apresentação da solução')],
  'meta':'Software sob medida e produtos digitais próprios. Conheça a Moca Tecnologia, nossos projetos e nossa forma de construir soluções.'
 },
 'en': {
- 'lang':'en','name':'Moca Technology','skip':'Skip to content','menu':'Menu','nav':['Solutions','Products','Projects','About'],'contact':'Let’s talk','other':'PT',
- 'eyebrow':'Software engineering · Moca Technology','headline':'Thoughtful software.<br><em>Business in motion.</em>',
+ 'lang':'en','name':'Moca Tecnologia','skip':'Skip to content','menu':'Menu','nav':['Solutions','Products','Projects','About'],'contact':'Let’s talk','other':'PT',
+ 'eyebrow':'Software engineering · Moca Tecnologia','headline':'Thoughtful software.<br><em>Business in motion.</em>',
  'intro':'We build custom software and develop our own digital products. Engineering and creativity, from the first sketch to the next release.',
  'cta':'Tell us your idea','explore':'Explore our products','bottom':['Custom software + our own products','From idea to evolution'],
  'solutions':'Two paths.<br>The same care for the product.','solutions_intro':'Building useful solutions starts with understanding what really needs to work.',
@@ -45,11 +48,11 @@ COPY = {
  'projects':'Technology in real projects.','project_intro':'Explore a project with Moca’s participation.','project_type':'Collaborative project','tooda_desc':'An initiative focused on protecting and helping locate vulnerable people on Rio de Janeiro’s beaches. Explore Moca’s technical contribution and the solution presentation.',
  'view_project':'Explore the project','all_projects':'All projects','process_title':'From the first conversation<br>to the next iteration.',
  'steps':[('Understand','Explore the context, the people and the problem to solve.'),('Design','Define the experience, architecture and priorities.'),('Build','Turn decisions into software, with testing and incremental delivery.'),('Evolve','Learn from real usage and shape the next steps.')],
- 'about_title':'Engineering with<br>room to create.','about_desc':'We are Moca Technology. We combine systems development, web applications and interactive experiences. We believe in technology that connects people and turns ideas into useful solutions.',
+ 'about_title':'About<br>Moca Tecnologia.','about_desc':'We are Moca Tecnologia. We combine systems development, web applications and interactive experiences. We believe in technology that connects people and turns ideas into useful solutions.',
  'contact_title':'The next project starts<br>with a conversation.','contact_desc':'A system for your business or a new product idea? Let’s understand what you want to build.','contact_fallback':'Find Moca on GitHub','footer':'Software, products and new possibilities.','back':'Back to projects',
  'case_title':'TOODA.<br>Technology that cares.','case_intro':'Explore the solution and Moca’s technical participation in TOODA — Safe Children.',
  'docs':[('Moca’s contribution','A technical overview of the project, development approach and technologies.','View technical presentation'),('TOODA — Safe Children','An introduction to the solution for protecting and helping locate vulnerable people on Rio de Janeiro’s beaches.','View solution presentation')],
- 'meta':'Custom software and our own digital products. Discover Moca Technology, our projects and how we build useful solutions.'
+ 'meta':'Custom software and our own digital products. Discover Moca Tecnologia, our projects and how we build useful solutions.'
 }}
 
 def products(locale,base):
@@ -82,11 +85,11 @@ def page(locale, kind, slug=None):
  c=COPY[locale]; base='/pt/' if locale=='pt' else '/'; other='/' if locale=='pt' else '/pt/'
  suffix=f'services/{slug}/' if kind=='service' else f'products/{slug}/' if kind=='product' else {'home':'','projects':'projects/','case':'projects/tooda.html'}[kind]
  def link(url,text,cls='text-link'):return f'<a class="{cls}" href="{url}">{text}<span aria-hidden="true">↗</span></a>'
- brand=f'<a class="brand" href="{base}" aria-label="{c["name"]}"><img src="/assets/moca-mark.svg" alt="" width="52" height="50"><span class="brand-name">moca<small>{"tecnologia" if locale=="pt" else "technology"}</small></span></a>'
+ brand=f'<a class="brand" href="{base}" aria-label="{c["name"]}"><img src="/assets/moca-mark.svg" alt="" width="52" height="50"><span class="brand-name">moca<small>tecnologia</small></span></a>'
  nav=''.join(f'<a href="{base}#{anchor}">{label}</a>' for anchor,label in zip(['solutions','products','projects','about'],c['nav']))
  header=f'<a class="skip" href="#main">{c["skip"]}</a><header class="header"><div class="wrap header-inner">{brand}<button class="menu-button" type="button" aria-controls="navigation" aria-expanded="false">{c["menu"]}</button><nav class="nav" id="navigation" aria-label="{"Principal" if locale=="pt" else "Main"}">{nav}<a class="lang" href="{other}{suffix}" lang="{"en" if locale=="pt" else "pt-BR"}" aria-label="{"English" if locale=="pt" else "Português"}">{c["other"]}</a>{link(base+"#contact",c['contact'],'button outline')}</nav></div></header>'
  contact=f'<section class="contact" id="contact"><div class="wrap contact-inner"><div><p class="eyebrow">{c["contact"]}</p><h2>{c["contact_title"]}</h2><p>{c["contact_desc"]}</p></div><div class="contact-actions">{link(CONTACT_URL,'WhatsApp','button')}{link('mailto:'+EMAIL,EMAIL)}<span>+55 (21) 96604-5167</span></div></div></section>'
- footer=f'<footer class="footer"><div class="wrap footer-inner"><span>© Moca · {c["footer"]}</span><div class="footer-links"><a href="https://github.com/developer-moca">GitHub ↗</a><a href="{other}{suffix}">{"English" if locale=="pt" else "Português"}</a></div></div></footer>'
+ footer=f'<footer class="footer"><div class="wrap footer-inner"><span>© {BRAND_NAME} · {c["footer"]}</span><div class="footer-links"><a href="https://github.com/developer-moca">Moca Tecnologia · GitHub ↗</a><a href="{other}{suffix}">{"English" if locale=="pt" else "Português"}</a></div></div></footer>'
  def project():return f'<div class="project"><a class="project-visual" href="{base}projects/tooda.html"><img src="/images/clients/moca-tooda-cover.png" alt="TOODA — Safe Children" width="1000" height="600" loading="lazy"></a><div><p class="eyebrow">{c["project_type"]}</p><h3>TOODA — Safe Children</h3><p>{c["tooda_desc"]}</p>{link(base+"projects/tooda.html",c["view_project"])}</div></div>'
  if kind=='home':
   body=f'''<section class="hero"><div class="wrap"><div class="hero-grid"><div><p class="eyebrow">{c['eyebrow']}</p><h1>{c['headline']}</h1><p class="lead">{c['intro']}</p><div class="actions">{link('#contact',c['cta'],'button')}{link('#products',c['explore'])}</div></div><div class="brand-drawing" aria-hidden="true"><img src="/assets/moca-mark.svg" alt="" width="360" height="330"><span class="drawing-note">MOCA / {"NOVOS HORIZONTES" if locale=='pt' else "NEW HORIZONS"}</span></div></div><div class="hero-bottom"><span>{c['bottom'][0]}</span><span>{c['bottom'][1]} ↘</span></div></div></section>
@@ -110,10 +113,10 @@ def page(locale, kind, slug=None):
  if kind=='home': title=c['name']+' | '+('Software sob medida e produtos digitais' if locale=='pt' else 'Custom software and digital products')
  url=f'https://www.mocatecnologia.com{base}{suffix}'
  image=f'https://www.mocatecnologia.com/assets/share-{locale}-v1.jpg'
- social_title = ('Moca Tecnologia | Software sob medida e produtos digitais' if locale=='pt' else 'Moca Technology | Custom software and digital products') if kind=='home' else title
+ social_title = ('Moca Tecnologia | Software sob medida e produtos digitais' if locale=='pt' else 'Moca Tecnologia | Custom software and digital products') if kind=='home' else title
  description = PRODUCTS[slug]['intro'][0 if locale=='pt' else 1] if kind=='product' else c['meta'] if kind=='home' else (c['project_intro'] if kind=='projects' else c['case_intro'])
  if kind=='service': description=SERVICES[slug]['intro'][0 if locale=='pt' else 1]
- image_alt = 'Moca Tecnologia — montanha e sol em dourado sobre azul-marinho' if locale=='pt' else 'Moca Technology — gold mountain and sun on navy'
+ image_alt = 'Moca Tecnologia — montanha e sol em dourado sobre azul-marinho' if locale=='pt' else 'Moca Tecnologia — gold mountain and sun on navy'
  social=f'''<link rel="canonical" href="{url}">
 <meta property="og:title" content="{escape(social_title)}">
 <meta property="og:description" content="{escape(description)}">
@@ -133,10 +136,12 @@ def page(locale, kind, slug=None):
 <meta name="twitter:description" content="{escape(description)}">
 <meta name="twitter:image" content="{image}">
 <meta name="twitter:image:alt" content="{image_alt}">'''
- org_id='https://www.mocatecnologia.com/#organization'
- graph=[{'@type':'WebPage','@id':url+'#webpage','url':url,'name':title,'description':description,'inLanguage':c['lang']}]
+ org_id=SITE_URL+'#organization'
+ website_id=SITE_URL+'#website'
+ graph=[{'@type':'WebPage','@id':url+'#webpage','url':url,'name':title,'description':description,'inLanguage':c['lang'],'isPartOf':{'@id':website_id},'about':{'@id':org_id}}]
  if kind=='home':
-  graph.append({'@type':'Organization','@id':org_id,'name':'Moca Tecnologia','url':'https://www.mocatecnologia.com/','logo':'https://www.mocatecnologia.com/assets/moca-mark.svg','email':EMAIL,'telephone':'+5521966045167','sameAs':['https://github.com/developer-moca']})
+  graph.append({'@type':'WebSite','@id':website_id,'name':BRAND_NAME,'alternateName':['Moca','mocatecnologia.com'],'url':SITE_URL,'inLanguage':['pt-BR','en'],'publisher':{'@id':org_id}})
+  graph.append({'@type':'Organization','@id':org_id,'name':BRAND_NAME,'alternateName':['Moca','Moca Technology'],'url':SITE_URL,'description':c['meta'],'logo':SITE_URL+'assets/moca-mark.svg','email':EMAIL,'telephone':'+5521966045167','sameAs':OFFICIAL_PROFILES})
  if kind=='service':
   graph.append({'@type':'Service','@id':url+'#service','name':SERVICES[slug]['title'][0 if locale=='pt' else 1],'description':description,'url':url,'provider':{'@id':org_id}})
  structured='<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('<','\\u003c')+'</script>'
