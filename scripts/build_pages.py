@@ -112,7 +112,7 @@ def page(locale, kind, slug=None):
  if kind=='service': title=SERVICES[slug]['title'][0 if locale=='pt' else 1]+' — '+c['name']
  if kind=='home': title=c['name']+' | '+('Software sob medida e produtos digitais' if locale=='pt' else 'Custom software and digital products')
  url=f'https://www.mocatecnologia.com{base}{suffix}'
- image=f'https://www.mocatecnologia.com/assets/share-{locale}-v1.jpg'
+ image=f'https://www.mocatecnologia.com/assets/share-{locale}-v2.jpg'
  social_title = ('Moca Tecnologia | Software sob medida e produtos digitais' if locale=='pt' else 'Moca Tecnologia | Custom software and digital products') if kind=='home' else title
  description = PRODUCTS[slug]['intro'][0 if locale=='pt' else 1] if kind=='product' else c['meta'] if kind=='home' else (c['project_intro'] if kind=='projects' else c['case_intro'])
  if kind=='service': description=SERVICES[slug]['intro'][0 if locale=='pt' else 1]
